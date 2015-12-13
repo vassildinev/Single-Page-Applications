@@ -1,0 +1,10 @@
+﻿<div>
+    <h2>View all pets <small>(click name for more details)</small></h2>
+    <hr />
+    <div class="well" ng-repeat="pet in vm.pets" style="width:550px;float:left;margin:5px;">
+        <h3 style="text-align:center;"><a href="#/pets/{{pet.Id}}/{{pet.Name}}">{{pet.Name}}</a></h3>
+        <h4 ng-hide="pet.Price===-1">Price: {{pet.Price | currency}}</h4>
+        <h4 ng-show="pet.Price===-1">Not for sale</h4>
+        <img ng-src="{{pet.Url}}" alt="This is a picture of a pet" style="width:100%; height:460px" />
+    </div>
+</div>

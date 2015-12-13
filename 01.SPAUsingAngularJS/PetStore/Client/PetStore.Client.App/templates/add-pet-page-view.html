@@ -1,0 +1,55 @@
+﻿<div>
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>Add a pet</legend>
+            <div class="form-group">
+                <label for="petName" class="col-lg-2 control-label">Name*</label>
+                <div class="col-lg-5">
+                    <input ng-model="vm.pet.Name" type="text" class="form-control" id="petName" placeholder="Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="petAge" class="col-lg-2 control-label">Age*</label>
+                <div class="col-lg-5">
+                    <input ng-model="vm.pet.Age" type="number" class="form-control" id="petAge" placeholder="Age">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="petIsNotForSale" class="col-lg-2 control-label">Not for sale</label>
+                <div class="col-lg-5">
+                    <div class="checkbox" style="margin-left:20px;"><input ng-model="vm.isNotForSale" id="petIsNotForSale" type="checkbox"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="petPrice" class="col-lg-2 control-label">Price*</label>
+                <div class="col-lg-5">
+                    <input ng-disabled="vm.isNotForSale" ng-model="vm.pet.Price" type="number" class="form-control" id="petPrice" placeholder="Price">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="petDescription" class="col-lg-2 control-label">Description*</label>
+                <div class="col-lg-5">
+                    <textarea ng-model="vm.pet.Description" class="form-control" rows="4" id="petDescription"></textarea>
+                    <span class="help-block">Describe in a few words the pet you would like to add.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="petUrl" class="col-lg-2 control-label">Url*</label>
+                <div class="col-lg-5">
+                    <input ng-model="vm.pet.Url" type="text" class="form-control" id="petUrl" placeholder="Url">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-5 col-lg-offset-2">
+                    <small>* - Required</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="reset" class="btn btn-default">Clear</button>
+                    <button ng-disabled="!!!vm.pet.Name || !!!vm.pet.Age || !!!vm.pet.Description || !!!vm.pet.Url || (!!!vm.pet.Price && !vm.isNotForSale)" ng-click="vm.addPet(vm.pet)" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

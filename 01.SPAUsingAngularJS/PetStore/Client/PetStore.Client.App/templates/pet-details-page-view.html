@@ -1,0 +1,21 @@
+﻿<div class="panel panel-default" style="width:550px;">
+    <div class="panel-heading">
+        <h3 style="text-align:center;">{{vm.pet.Name}}</h3>
+    </div>
+    <div class="panel-body">
+        <img ng-src="{{vm.pet.Url}}" alt="This is a picture of a pet" style="width:100%; height:460px" />
+        <p>
+            <span style="text-decoration: underline">Age:</span> {{vm.pet.Age}} year(s) old
+        </p>
+        <p>
+            <span style="text-decoration: underline">Description:</span> {{vm.pet.Description}}
+        </p>
+        <p ng-show="vm.canBuy">
+            <span style="text-decoration: underline">Price:</span> {{vm.pet.Price | currency}}
+        </p>
+        <p ng-show="!vm.canBuy">This pet is not for sale</p>
+    </div>
+    <div ng-show="vm.canBuy" class="panel-footer">
+        <a href="/pets/{{vm.pet.Id}}/{{vm.pet.Name}}/buy">Click here to buy!</a>
+    </div>
+</div>

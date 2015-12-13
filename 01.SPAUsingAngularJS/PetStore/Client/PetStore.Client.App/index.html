@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Pet Store</title>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/angular/ng-notify.min.css" />
+</head>
+<body ng-app="petStore">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">Pet Store</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/">Home</a></li>
+                </ul>
+                <div ng-controller="LoginPageController as vm">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/pets/all">Pets</a></li>
+                        <li><a id="add-pet" href="#/pets/add">Add</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="login" href="#/identity/login">Login</a></li>
+                        <li><a id="register" href="#/identity/register">Register</a></li>
+                        <li><a id="username" class="ng-hide" href="#/"></a></li>
+                        <li><a id="logout" class="ng-hide" ng-click="vm.logout()" href="#/">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" ng-view>
+
+    </div>
+
+    <!--Vendors scripts-->
+    <script src="lib/jquery/jquery-2.1.4.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+    <script src="lib/angular/angular-cookies.js"></script>
+    <script src="lib/angular/notifier/ng-notify.min.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+
+    <!--Main script-->
+    <script src="js/app.js"></script>
+
+    <!--Services-->
+    <script src="js/identity/identity-service.js"></script>
+    <script src="js/identity/auth-service.js"></script>
+    <script src="js/pets/pets-service.js"></script>
+
+    <!--Controllers-->
+    <script src="js/home/home-page-controller.js"></script>
+    <script src="js/identity/login-page-controller.js"></script>
+    <script src="js/identity/register-page-controller.js"></script>
+    <script src="js/pets/all-pets-page-controller.js"></script>
+    <script src="js/pets/add-pet-page-controller.js"></script>
+    <script src="js/pets/pet-details-page-controller.js"></script>
+</body>
+</html>
