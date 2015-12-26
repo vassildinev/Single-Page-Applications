@@ -1,0 +1,19 @@
+﻿<div class="panel panel-info">
+    <div class="panel-heading text-center">
+        <h3 class="panel-title">Commits:</h3>
+    </div>
+    <div class="panel-body">
+        <table class="text-center table-bordered" style="width:100%">
+            <tr>
+                <th class="col-sm-2 text-center">User</th>
+                <th class="col-sm-2 text-center">Created on</th>
+                <th class="col-sm-2 text-center">Link</th>
+            </tr>
+            <tr ng-repeat="commit in vm.commits">
+                <td class="col-sm-2 text-center">{{commit.UserName}}</td>
+                <td class="col-sm-2 text-center">{{commit.CreatedOn | fancyDate}}</td>
+                <td class="col-sm-2 text-center"><a href="#/commits/{{commit.Id}}">Details</a></td>
+            </tr>
+        </table>
+    </div>
+</div>

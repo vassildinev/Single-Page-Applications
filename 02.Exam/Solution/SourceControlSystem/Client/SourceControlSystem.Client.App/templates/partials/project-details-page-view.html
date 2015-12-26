@@ -1,0 +1,59 @@
+﻿<div class="panel panel-primary" style="width:500px;display:block;margin-left:auto;margin-right:auto">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{vm.project.Name}}</h3>
+    </div>
+    <div class="panel-body">
+        <div><strong>Created on:</strong> {{vm.project.CreatedOn | fancyDate}}</div>
+        <div>
+            <strong>Collaborators: </strong><span ng-repeat="name in vm.collaborators"><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{name}}</span>
+            <br />
+            <div ng-show="vm.isCollaborator">
+                <br />
+                <label for="add">Add by email:</label> <input id="add" ng-model="vm.toAdd" type="text" class="form-control" style="width:200px;display:inline-block" /> <a class="btn btn-primary btn-sm" ng-click="vm.addCollaborator(vm.toAdd)">Add</a>
+                <br />
+            </div>
+        </div>
+        <div><strong>License:</strong> <img ng-src="img/licenses/{{vm.project.License | lowercase}}.jpg" /></div>
+        <hr />
+        <div>
+            <label for="mine">Show my commits only </label>
+            <input type="checkbox" id="mine" ng-model="vm.showMyCommitsOnly" />
+            <br />
+        </div>
+        <div commits></div>
+        <ul class="pager">
+            <li class="unselectable"><a ng-click="vm.getPreviousPage()">Prev</a></li>
+            <li><input disabled type="text" class="text-center unselectable" style="border-radius:10px; width:30px; background-color:white" ng-model="vm.filters.Page" ng-init="vm.filters.Page='1'" /></li>
+            <li class="unselectable"><a ng-click="vm.getNextPage()">Next</a></li>
+        </ul>
+        <div>
+            <label for="picker">Enable timespan search <small>(both dates are required)</small> </label>
+            <input type="checkbox" id="picker" ng-model="vm.showDatePicker" />
+            <br />
+            <input kendo-date-time-picker ng-show="vm.showDatePicker" k-ng-model="vm.startDateTime" />
+            <input kendo-date-time-picker ng-show="vm.showDatePicker" k-ng-model="vm.endDateTime" />
+        </div>
+        <div>
+            <div>
+                <label for="pageSize">Commits per page: </label>
+                <select id="pageSize" ng-model="vm.filters.PageSize" ng-init="vm.filters.PageSize='10'">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+                <br />
+                <label for="byUser">By user (email): </label>
+                <input type="text" id="byUser" ng-model="vm.filters.ByUser" ng-disabled="vm.showMyCommitsOnly" />
+                <br />
+                <div class="text-center">
+                    <button ng-disabled="vm.showDatePicker && (!vm.startDateTime || !vm.endDateTime || vm.startDateTime > vm.endDateTime)" class="btn btn-primary" ng-click="vm.toggleCommits(vm.showMyCommitsOnly)">Filter</button>
+                </div>
+                <br />
+                <div class="text-center">
+                    <a class="btn btn-primary" href="#/projects/{{vm.project.Id}}/addcommits">Add commit</a>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>

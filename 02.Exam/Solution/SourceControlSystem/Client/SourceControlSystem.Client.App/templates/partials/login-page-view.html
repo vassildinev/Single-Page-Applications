@@ -1,0 +1,27 @@
+﻿<form name="loginForm" class="form-horizontal"  ng-cloak>
+    <fieldset>
+        <legend>Login</legend>
+        <div class="form-group">
+            <label for="inputEmail" class="col-lg-2 control-label">Email*</label>
+            <div class="col-lg-5">
+                <input ng-model="user.email" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="col-lg-2 control-label">Password*</label>
+            <div class="col-lg-5">
+                <input ng-model="user.password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-5 col-lg-offset-2">
+                <small>* - Required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-5 col-lg-offset-2">
+                <button type="button" data-loading-text="Working..." ng-disabled="!!!user.email || !!!user.password" ng-click="vm.login($event, user)" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

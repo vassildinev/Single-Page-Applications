@@ -1,0 +1,49 @@
+﻿<div ng-show="!vm.isAuthorized" projects></div>
+<div ng-show="vm.isAuthorized">
+    <div>
+        <div class="text-center">
+            <a class="btn btn-primary" href="#/projects/add">Create new project</a>
+        </div>
+        <div>
+            <label for="pageSize">Projects per page: </label>
+            <select id="pageSize" ng-model="vm.filters.PageSize" ng-init="vm.filters.PageSize='10'">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
+            <br />
+            <label for="orderBy">Order by: </label>
+            <select id="orderBy" ng-model="vm.filters.OrderBy" ng-init="vm.filters.OrderBy='date'">
+                <option value="name">Name</option>
+                <option value="collaborators">Number of collaborators</option>
+                <option value="date">Date</option>
+            </select>
+            <br />
+            <label for="orderType">Order type: </label>
+            <select id="orderType" ng-model="vm.filters.OrderType" ng-init="vm.filters.OrderType='asc'">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+            <br />
+            <label for="byUser">By user (email): </label>
+            <input type="text" id="byUser" ng-model="vm.filters.ByUser" />
+            <br />
+            <label for="byName">Filter by name and description: </label>
+            <input type="text" id="byName" ng-model="vm.filters.Filter" />
+            <br />
+            <label for="byPrivacy">Only public </label>
+            <input type="checkbox" id="byPrivacy" ng-model="vm.filters.OnlyPublic" ng-init="vm.filters.OnlyPublic=true" />
+            <br />
+            <div class="text-center">
+                <a class="btn btn-primary" ng-click="vm.filter(vm.filters)">Filter</a>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div projects></div>
+    <ul class="pager">
+        <li class="unselectable"><a ng-click="vm.getPreviousPage()">Prev</a></li>
+        <li><input disabled type="text" class="text-center unselectable" style="border-radius:10px; width:30px; background-color:white" ng-model="vm.filters.Page" ng-init="vm.filters.Page='1'" /></li>
+        <li class="unselectable"><a ng-click="vm.getNextPage()">Next</a></li>
+    </ul>
+</div>

@@ -1,0 +1,21 @@
+﻿<div class="panel panel-info">
+    <div class="panel-heading text-center">
+        <h3 class="panel-title">Projects:</h3>
+    </div>
+    <div class="panel-body">
+        <table style="width:100%" class="text-center table-bordered">
+            <tr>
+                <th class="col-sm-2 text-center">Name</th>
+                <th class="col-sm-2 text-center">Created on</th>
+                <th class="col-sm-2 text-center">Total Users</th>
+                <th class="col-sm-2 text-center">License</th>
+            </tr>
+            <tr ng-repeat="project in vm.projects">
+                <td class="col-sm-2 text-center"><a href="#/projects/{{project.Id}}">{{project.Name}}</a></td>
+                <td class="col-sm-2 text-center">{{project.CreatedOn | fancyDate}}</td>
+                <td class="col-sm-2 text-center">{{project.TotalUsers}}</td>
+                <td class="col-sm-2 text-center"><img ng-src="../../img/licenses/{{project.License | lowercase}}.jpg" /></td>
+            </tr>
+        </table>
+    </div>
+</div>
